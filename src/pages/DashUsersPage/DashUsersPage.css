@@ -1,0 +1,11 @@
+.dash-users {
+  padding: 10px;
+}
+
+.dash-users-container {
+  height: calc(100vh - 160px);
+}
+
+.dash-users .header {
+  margin-bottom: 30px;
+}

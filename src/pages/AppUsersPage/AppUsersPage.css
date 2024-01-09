@@ -1,0 +1,11 @@
+.app-users-page {
+  padding: 10px;
+}
+
+.app-users-container {
+  height: calc(100vh - 160px);
+}
+
+.app-users-page .header {
+  margin-bottom: 30px;
+}

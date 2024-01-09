@@ -1,0 +1,46 @@
+.chats {
+  padding: 10px;
+}
+
+.chats-container {
+  display: flex;
+  flex-direction: column;
+  /* gap: 1rem; */
+  margin-top: 20px;
+}
+
+.select-all {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+}
+
+.select {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.select > label {
+  margin-right: 5px;
+  cursor: pointer;
+}
+
+.delete {
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  outline: none;
+}
+
+.delete:active {
+  transform: scale(0.9);
+}
+
+.chats-content {
+  display: flex;
+  min-height: 431px;
+  flex-direction: column;
+  /* gap: 12px; */
+}

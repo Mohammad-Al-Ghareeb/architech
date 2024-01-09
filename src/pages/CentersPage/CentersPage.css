@@ -1,0 +1,15 @@
+.centers {
+  padding: 10px;
+}
+
+.centers-container {
+  height: calc(100vh - 160px);
+}
+
+.centers .header {
+  margin-bottom: 30px;
+}
+
+.centers .check {
+  height: 515px !important;
+}

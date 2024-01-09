@@ -1,0 +1,41 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #fff;
+  padding: 10px 20px;
+  border-radius: 25px;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+}
+
+.header-right > img {
+  margin-left: 10px;
+}
+
+.header-name {
+  font-weight: bold;
+  margin-left: 5px;
+}
+
+.header button {
+  background-color: rgba(65, 192, 240, 1);
+  border-radius: 25px;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.header button:active {
+  transform: scale(0.9);
+}
+
+.header-number {
+  color: rgba(65, 192, 240, 1);
+  font-size: 13px;
+}
