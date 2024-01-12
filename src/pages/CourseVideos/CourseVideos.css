@@ -87,3 +87,35 @@
   font-size: 12px;
   line-height: 28px;
 }
+
+.addAttachment {
+  padding: 0 15px;
+}
+
+.attachment-data {
+  padding: 0 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.attachment-data .attachment-data-left {
+  display: flex;
+  align-items: center;
+}
+
+.attachment-data .attachment-data-left > p {
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.delete-btn {
+  margin-top: 10px;
+  color: rgb(214, 76, 115);
+  width: fit-content;
+  padding: 6px 6px;
+  cursor: pointer;
+  text-align: center;
+  border-radius: 15px;
+  border: 1px solid;
+}

@@ -12,14 +12,15 @@ import { RotatingLines } from "react-loader-spinner";
 const COURSE_PER_PAGE = 3;
 const CoursesPage = () => {
   const dispatch = useDispatch();
-  const { courses, numberOfCourses, isOpenedCourse, loading } = useSelector(
-    (state) => state.course
-  );
+  const { courses, numberOfCourses, isOpenedCourse, deleteLoading } =
+    useSelector((state) => state.course);
 
   const [currentPage, setCurrentPage] = useState(1);
   const pages = Math.ceil(numberOfCourses / COURSE_PER_PAGE);
   useEffect(() => {
     dispatch(getCourses(currentPage, COURSE_PER_PAGE));
+    dispatch(coursesAction.removeVideoSrc());
+    dispatch(coursesAction.removeVideoAttachment());
   }, [currentPage, dispatch]);
   return (
     <div className="coursesPage">
@@ -53,7 +54,7 @@ const CoursesPage = () => {
                 numberOfVideos={row.driveVideoIds.length}
               />
             </Link>
-            {loading ? (
+            {deleteLoading ? (
               <div className="delete-course">
                 <RotatingLines
                   strokeColor="rgb(214, 76, 115)"

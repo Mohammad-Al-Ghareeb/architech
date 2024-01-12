@@ -1,19 +1,22 @@
 import { useDispatch } from "react-redux";
 import "./ChooseVideoSrc.css";
 import { coursesAction } from "../../redux/slices/coursesSlice";
+import { getAttachmentByVideoId } from "../../redux/apiCalls/coursesApiCall";
 
-const ChooseVideoSrc = ({ e }) => {
+const ChooseVideoSrc = ({ e, index }) => {
   const dispatch = useDispatch();
   return (
     <div
       className="chooseVideoSrc"
       onClick={() => {
-        dispatch(coursesAction.setVideoSrc(e.fileId));
+        dispatch(coursesAction.removeVideoAttachment());
+        dispatch(coursesAction.setVideoData(e));
+        dispatch(getAttachmentByVideoId(e.videoId));
       }}
     >
       <div className="video-src-data">
         <div className="video-src-data-text">
-          <div className="number">1</div>
+          <div className="number">{index}</div>
           <div className="video-title">
             <p>مخصص لكتابة عنوان الفيديو</p>
             <p>حذف الفيديو</p>

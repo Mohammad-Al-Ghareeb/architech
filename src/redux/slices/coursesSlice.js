@@ -8,7 +8,11 @@ const coursesSlice = createSlice({
     numberOfCourses: 0,
     isOpenedCourse: false,
     loading: false,
+    deleteLoading: false,
     videoSrc: null,
+    videoData: null,
+    videoAttachment: null,
+    helperName: null,
   },
   reducers: {
     setCourses(state, action) {
@@ -33,6 +37,27 @@ const coursesSlice = createSlice({
     },
     setVideoSrc(state, action) {
       state.videoSrc = action.payload;
+    },
+    removeVideoSrc(state) {
+      state.videoSrc = null;
+    },
+    setDeleteLoading(state) {
+      state.deleteLoading = !state.deleteLoading;
+    },
+    setVideoData(state, action) {
+      state.videoData = action.payload;
+    },
+    removeVideoData(state) {
+      state.videoData = null;
+    },
+    setVideoAttachment(state, action) {
+      state.videoAttachment = action.payload;
+    },
+    removeVideoAttachment(state) {
+      state.videoAttachment = null;
+    },
+    setHelperName(state, action) {
+      state.helperName = action.payload;
     },
   },
 });

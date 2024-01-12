@@ -16,6 +16,17 @@ export function getCourses(currentPage, appUserPerPage) {
   };
 }
 
+export function getOneCourse(id) {
+  return async (dispatch) => {
+    try {
+      const { data } = await request.get(`/Course/GetCourseById?id=${id}`);
+
+      dispatch(coursesAction.setHelperName(data.courseName));
+    } catch (error) {
+      console.log(error);
+    }
+  };
+}
 export function getCourseVideos(courseId) {
   return async (dispatch) => {
     try {
@@ -48,18 +59,45 @@ export function addCourse(courseData, currentPage, coursePerPage) {
 export function deleteCourse(courseId, currentPage, setCurrentPage) {
   return async (dispatch) => {
     try {
-      dispatch(coursesAction.setLoading());
+      dispatch(coursesAction.setDeleteLoading());
       await request.delete(`/Course/DeleteCourseById?id=${courseId}`);
       dispatch(coursesAction.removeCourse(courseId));
       toast.success("تم حذف الكورس...");
     } catch (error) {
       console.log(error);
     } finally {
+      dispatch(coursesAction.setDeleteLoading());
       let x = currentPage;
-      dispatch(coursesAction.setLoading());
       if (currentPage !== 1) x = currentPage - 1;
       setCurrentPage(x);
       dispatch(getCourses(x, 3));
+    }
+  };
+}
+
+export function getAttachmentByVideoId(videoId) {
+  return async (dispatch) => {
+    try {
+      const { data } = await request.get(
+        `/Video/AttachmentByVideoId?videoId=${videoId}`
+      );
+      dispatch(coursesAction.setVideoAttachment(data[0].name));
+    } catch (error) {
+      console.log(error);
+    }
+  };
+}
+
+export function deleteAttachment(attachmentId) {
+  return async (dispatch) => {
+    try {
+      await request.delete(
+        `/Video/DeleteAttachment?attachmentId=${attachmentId}`
+      );
+      dispatch(coursesAction.removeVideoAttachment());
+      toast.success("تم حذف الملحق...");
+    } catch (error) {
+      console.log(error);
     }
   };
 }
