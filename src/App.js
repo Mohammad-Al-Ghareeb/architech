@@ -15,6 +15,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { useSelector } from "react-redux";
 import LogoutLayout from "./components/LogoutLayout/LogoutLayout";
 import DashUsersLayout from "./components/DashUsersLayout/DashUsersLayout";
+import CourseVideos from "./pages/CourseVideos/CourseVideos";
 
 function App() {
   const { user, isLogout } = useSelector((state) => state.auth);
@@ -41,6 +42,12 @@ function App() {
               path="/"
               element={user ? <CoursesPage /> : <Navigate to={"/login"} />}
             />
+
+            <Route
+              path="/course/:id"
+              element={user ? <CourseVideos /> : <Navigate to={"/login"} />}
+            />
+
             <Route
               path="/subscribers"
               element={user ? <SubscribersPage /> : <Navigate to={"/login"} />}

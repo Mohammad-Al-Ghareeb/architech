@@ -1,0 +1,24 @@
+.coursesPage {
+  padding: 10px;
+}
+
+.coursesPage .courses-container {
+  height: calc(100vh - 160px);
+  display: grid;
+  grid-template-columns: auto auto auto;
+}
+
+.coursesPage .header {
+  margin-bottom: 30px;
+}
+
+.coursesPage .course-lay {
+  height: 415px !important;
+}
+
+.courses-container-item {
+  display: flex;
+  flex-direction: column;
+  max-width: 350px;
+  align-items: center;
+}
