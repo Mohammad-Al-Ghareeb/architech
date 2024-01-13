@@ -7,6 +7,8 @@ const coursesSlice = createSlice({
     courseVideos: [],
     numberOfCourses: 0,
     isOpenedCourse: false,
+    isOpenedVideo: false,
+    isOpenedAttachment: true,
     loading: false,
     deleteLoading: false,
     videoSrc: null,
@@ -58,6 +60,12 @@ const coursesSlice = createSlice({
     },
     setHelperName(state, action) {
       state.helperName = action.payload;
+    },
+    setIsOpenedVideo(state) {
+      state.isOpenedVideo = !state.isOpenedVideo;
+    },
+    setIsOpenedAttachment(state) {
+      state.isOpenedAttachment = !state.isOpenedAttachment;
     },
   },
 });

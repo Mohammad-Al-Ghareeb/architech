@@ -1,53 +1,64 @@
 import { useDispatch, useSelector } from "react-redux";
-import "./CourseLayout.css";
+import "./AddVideoLayout.css";
 import { useState } from "react";
 import { RotatingLines } from "react-loader-spinner";
 import { coursesAction } from "../../redux/slices/coursesSlice";
-import { addCourse } from "../../redux/apiCalls/coursesApiCall";
+import { addVideo } from "../../redux/apiCalls/coursesApiCall";
 
-const CourseLayout = ({ currentPage, coursePerPage }) => {
+const AddVideoLayout = ({ id }) => {
   const dispatch = useDispatch();
-  const [CourseName, setCourseName] = useState("");
-  const [Description, setDescription] = useState("from admin");
-  const [Image, setImage] = useState(null);
+  const [VideoName, setVideoName] = useState("");
+  const [Description, setDescription] = useState("");
+  const [video, setVideo] = useState(null);
 
   const { loading } = useSelector((state) => state.course);
 
   const handleAddCourse = () => {
     const formData = new FormData();
-    formData.append("CourseName", CourseName);
+    formData.append("VideoName", VideoName);
     formData.append("Description", Description);
-    formData.append("Image", Image);
-    // todo: send course
-    dispatch(addCourse(formData, currentPage, coursePerPage));
-    setCourseName("");
+    formData.append("Video", video);
+    formData.append("CourseId", id);
+    // todo: send video
+    dispatch(addVideo(formData, id));
+    setVideoName("");
     setDescription("");
-    setImage(null);
+    setVideo(null);
   };
 
   return (
-    <div className="dash-users-layout ">
-      <div className="check course-lay">
+    <div className="dash-users-layout video-layout">
+      <div className="check video-lay">
         <div className="add-new">
           <p>إضافة كورس جديد ؟</p>
           <img
             src="/assests/deleteIcon.png"
             alt=""
             onClick={() => {
-              dispatch(coursesAction.setIsOpenedCourse());
+              dispatch(coursesAction.setIsOpenedAttachment());
             }}
           />
         </div>
         <img src="/assests/addCourseImg.png" />
         <form className="form form-dash">
-          <label>أدخل اسم الكورس</label>
+          <label>أدخل اسم الفيديو</label>
           <input
-            value={CourseName}
+            value={VideoName}
             onChange={(e) => {
-              setCourseName(e.target.value);
+              setVideoName(e.target.value);
             }}
             type="text"
-            placeholder="كورس بناء"
+            placeholder="الفيديو الأول"
+          />
+
+          <label>أدخل وصف الفيديو</label>
+          <input
+            value={Description}
+            onChange={(e) => {
+              setDescription(e.target.value);
+            }}
+            type="text"
+            placeholder="الفيديو الأول"
           />
 
           <div className="input-photo">
@@ -55,10 +66,10 @@ const CourseLayout = ({ currentPage, coursePerPage }) => {
               className="hide-input"
               type="file"
               onChange={(e) => {
-                setImage(e.target.files[0]);
+                setVideo(e.target.files[0]);
               }}
             />
-            <div className="div-helper">أضف صورة</div>
+            <div className="div-helper">أضف فيديو</div>
           </div>
 
           <div className="btn" onClick={handleAddCourse}>
@@ -85,4 +96,4 @@ const CourseLayout = ({ currentPage, coursePerPage }) => {
   );
 };
 
-export default CourseLayout;
+export default AddVideoLayout;

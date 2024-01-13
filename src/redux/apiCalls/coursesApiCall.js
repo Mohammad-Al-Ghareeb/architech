@@ -56,6 +56,22 @@ export function addCourse(courseData, currentPage, coursePerPage) {
   };
 }
 
+export function addVideo(videoData, id) {
+  return async (dispatch) => {
+    try {
+      dispatch(coursesAction.setLoading());
+      await request.post(`/Video/CreateVideo`, videoData);
+      toast.success("تم اضافة فيديو جديد");
+    } catch (error) {
+      toast.error(error.response.data.errors);
+      console.log(error);
+    } finally {
+      dispatch(getCourseVideos(id));
+      dispatch(coursesAction.setLoading());
+    }
+  };
+}
+
 export function deleteCourse(courseId, currentPage, setCurrentPage) {
   return async (dispatch) => {
     try {
@@ -71,6 +87,22 @@ export function deleteCourse(courseId, currentPage, setCurrentPage) {
       if (currentPage !== 1) x = currentPage - 1;
       setCurrentPage(x);
       dispatch(getCourses(x, 3));
+    }
+  };
+}
+
+export function deleteVideo(videoId, courseId) {
+  return async (dispatch) => {
+    try {
+      dispatch(coursesAction.setDeleteLoading());
+      await request.delete(`/Video/DeleteVideo?videoId=${videoId}`);
+      toast.success("تم حذف الفيديو...");
+      dispatch(coursesAction.removeVideoData());
+    } catch (error) {
+      console.log(error);
+    } finally {
+      dispatch(getCourseVideos(courseId));
+      dispatch(coursesAction.setDeleteLoading());
     }
   };
 }

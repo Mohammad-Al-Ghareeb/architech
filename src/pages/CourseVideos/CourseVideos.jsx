@@ -3,6 +3,7 @@ import "./CourseVideos.css";
 import { useEffect } from "react";
 import {
   deleteAttachment,
+  deleteVideo,
   getCourseVideos,
   getOneCourse,
 } from "../../redux/apiCalls/coursesApiCall";
@@ -10,24 +11,38 @@ import { useParams } from "react-router";
 import Header from "../../components/Header/Header";
 import ChooseVideoSrc from "../../components/ChooseVideoSrc/ChooseVideoSrc";
 import { coursesAction } from "../../redux/slices/coursesSlice";
+import AddVideoLayout from "../../components/AddVideoLayout/AddVideoLayout";
+import { RotatingLines } from "react-loader-spinner";
+import AddAttachmentLayout from "../../components/AddAttachmentLayout/AddAttachmentLayout";
 
 const CourseVideos = () => {
   const dispatch = useDispatch();
+  const { isOpenedVideo } = useSelector((state) => state.course);
   const { id } = useParams();
   useEffect(() => {
     dispatch(getCourseVideos(id));
     dispatch(getOneCourse(id));
     dispatch(coursesAction.removeVideoSrc());
   }, [id, dispatch]);
-  const { courseVideos, videoData, videoAttachment, helperName } = useSelector(
-    (state) => state.course
-  );
+  const {
+    courseVideos,
+    videoData,
+    videoAttachment,
+    helperName,
+    deleteLoading,
+    isOpenedAttachment,
+  } = useSelector((state) => state.course);
   return (
     <div className="course-videos">
+      {isOpenedVideo && <AddVideoLayout id={id} />}
+
+      {isOpenedAttachment && <AddAttachmentLayout />}
       <Header
         src={"/assests/allCourses.png"}
         headerName={helperName}
-        functionClick={() => {}}
+        functionClick={() => {
+          dispatch(coursesAction.setIsOpenedVideo());
+        }}
         buttonName={"اضافة فيديو"}
       />
       <div className="course-video-container">
@@ -73,15 +88,47 @@ const CourseVideos = () => {
             ) : (
               <p className="addAttachment">
                 {videoData ? (
-                  <div className="delete-btn" onClick={() => {}}>
+                  <div
+                    className="delete-btn"
+                    onClick={() => {
+                      dispatch(coursesAction.setIsOpenedAttachment());
+                    }}
+                  >
                     اضافة ملف
                   </div>
-                ) : (
-                  <p></p>
-                )}
+                ) : null}
               </p>
             )
           }
+
+          <div className="help-delete">
+            {deleteLoading ? (
+              <div className="delete-video">
+                <RotatingLines
+                  strokeColor="rgb(214, 76, 115)"
+                  visible={true}
+                  height="20"
+                  width="20"
+                  color="rgb(214, 76, 115)"
+                  strokeWidth="5"
+                  animationDuration="0.75"
+                  ariaLabel="rotating-lines-loading"
+                  wrapperStyle={{}}
+                  wrapperClass=""
+                />
+              </div>
+            ) : (
+              <button
+                className="delete-btn"
+                disabled={!videoData}
+                onClick={() => {
+                  dispatch(deleteVideo(videoData.videoId, videoData.courseId));
+                }}
+              >
+                {videoData ? "حذف هذا الفيديو" : "لايوجد فيديو لعرضه"}
+              </button>
+            )}
+          </div>
         </div>
         <div className="video-list">
           <div className="video-list-helper">

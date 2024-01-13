@@ -1,0 +1,23 @@
+.video-lay {
+  height: 488px !important;
+}
+
+.video-layout {
+  z-index: 20;
+}
+
+.delete-video {
+  margin-top: 10px;
+  color: rgb(214, 76, 115);
+  width: fit-content;
+  padding: 3px 15px;
+  cursor: pointer;
+  text-align: center;
+  border-radius: 15px;
+  border: 1px solid;
+  background: none;
+}
+
+.help-delete {
+  padding: 0 15px;
+}

@@ -38,7 +38,7 @@
 
 .video-title > p:last-child {
   color: rgba(65, 192, 240, 1);
-  cursor: pointer;
+  /* cursor: pointer; */
 }
 
 .active-chooseVideoSrc {
