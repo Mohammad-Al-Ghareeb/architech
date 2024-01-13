@@ -2,6 +2,7 @@ import { NavLink } from "react-router-dom";
 import "./Sidebar.css";
 import { useDispatch } from "react-redux";
 import { authActions } from "../../redux/slices/authSlice";
+import { coursesAction } from "../../redux/slices/coursesSlice";
 
 const Sidebar = () => {
   const dispatch = useDispatch();
@@ -47,7 +48,13 @@ const Sidebar = () => {
         <p className="role">Admin</p>
       </div>
       <div className="links">
-        <NavLink to={"/"} className="link">
+        <NavLink
+          to={"/"}
+          className="link"
+          onClick={() => {
+            dispatch(coursesAction.removeVideoData());
+          }}
+        >
           <div className="icon">
             <img src="/assests/courses.png" alt="" />
             <p className="link-name">الكورسات</p>
@@ -67,7 +74,13 @@ const Sidebar = () => {
             />
           </svg>
         </NavLink>
-        <NavLink to={"/subscribers"} className="link">
+        <NavLink
+          to={"/subscribers"}
+          className="link"
+          onClick={() => {
+            dispatch(coursesAction.removeVideoData());
+          }}
+        >
           <div className="icon">
             <img src="/assests/subscribe.png" alt="" />
             <p className="link-name">الاشتراكات</p>
@@ -87,7 +100,13 @@ const Sidebar = () => {
             />
           </svg>
         </NavLink>
-        <NavLink to={"/centers"} className="link">
+        <NavLink
+          to={"/centers"}
+          className="link"
+          onClick={() => {
+            dispatch(coursesAction.removeVideoData());
+          }}
+        >
           <div className="icon">
             <img src="/assests/center.png" alt="" />
             <p className="link-name">مراكز الخدمة</p>
@@ -107,7 +126,13 @@ const Sidebar = () => {
             />
           </svg>
         </NavLink>
-        <NavLink to={"/app-users"} className="link">
+        <NavLink
+          to={"/app-users"}
+          className="link"
+          onClick={() => {
+            dispatch(coursesAction.removeVideoData());
+          }}
+        >
           <div className="icon">
             <div className="circle">
               <img src="/assests/appUser.png" alt="" />
@@ -129,7 +154,13 @@ const Sidebar = () => {
             />
           </svg>
         </NavLink>
-        <NavLink to={"/dash-users"} className="link">
+        <NavLink
+          to={"/dash-users"}
+          className="link"
+          onClick={() => {
+            dispatch(coursesAction.removeVideoData());
+          }}
+        >
           <div className="icon">
             <div className="circle">
               <img src="/assests/dashUser.png" alt="" />
@@ -151,7 +182,13 @@ const Sidebar = () => {
             />
           </svg>
         </NavLink>
-        <NavLink to={"/notifications"} className="link">
+        <NavLink
+          to={"/notifications"}
+          className="link"
+          onClick={() => {
+            dispatch(coursesAction.removeVideoData());
+          }}
+        >
           <div className="icon">
             <div className="circle">
               <img src="/assests/notifi.png" alt="" />
@@ -173,7 +210,13 @@ const Sidebar = () => {
             />
           </svg>
         </NavLink>
-        <NavLink to={"/chats"} className="link">
+        <NavLink
+          to={"/chats"}
+          className="link"
+          onClick={() => {
+            dispatch(coursesAction.removeVideoData());
+          }}
+        >
           <div className="icon">
             <div className="circle">
               <img src="/assests/chat.png" alt="" />
@@ -195,7 +238,13 @@ const Sidebar = () => {
             />
           </svg>
         </NavLink>
-        <NavLink to={"/settings"} className="link">
+        <NavLink
+          to={"/settings"}
+          className="link"
+          onClick={() => {
+            dispatch(coursesAction.removeVideoData());
+          }}
+        >
           <div className="icon">
             <div className="circle">
               <img src="/assests/setting.png" alt="" />

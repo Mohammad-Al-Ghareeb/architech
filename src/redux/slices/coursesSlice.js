@@ -8,7 +8,7 @@ const coursesSlice = createSlice({
     numberOfCourses: 0,
     isOpenedCourse: false,
     isOpenedVideo: false,
-    isOpenedAttachment: true,
+    isOpenedAttachment: false,
     loading: false,
     deleteLoading: false,
     videoSrc: null,

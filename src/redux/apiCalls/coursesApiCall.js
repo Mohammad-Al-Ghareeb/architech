@@ -102,7 +102,24 @@ export function deleteVideo(videoId, courseId) {
       console.log(error);
     } finally {
       dispatch(getCourseVideos(courseId));
+      dispatch(coursesAction.removeVideoAttachment());
       dispatch(coursesAction.setDeleteLoading());
+    }
+  };
+}
+
+export function addAttachment(attachmentData, Name) {
+  return async (dispatch) => {
+    try {
+      dispatch(coursesAction.setLoading());
+      await request.post(`/Video/AddAttachmentToVideo`, attachmentData);
+      toast.success("تم اضافة الملحق");
+    } catch (error) {
+      toast.error(error.response.data.errors);
+      console.log(error);
+    } finally {
+      dispatch(coursesAction.setVideoAttachment(Name));
+      dispatch(coursesAction.setLoading());
     }
   };
 }

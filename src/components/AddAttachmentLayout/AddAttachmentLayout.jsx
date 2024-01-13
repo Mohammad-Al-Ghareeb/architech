@@ -3,34 +3,34 @@ import "./AddAttachmentLayout.css";
 import { useState } from "react";
 import { RotatingLines } from "react-loader-spinner";
 import { coursesAction } from "../../redux/slices/coursesSlice";
-import { addVideo } from "../../redux/apiCalls/coursesApiCall";
+import { addAttachment, addVideo } from "../../redux/apiCalls/coursesApiCall";
 
 const AddAttachmentLayout = ({ id }) => {
   const dispatch = useDispatch();
-  const [VideoName, setVideoName] = useState("");
-  const [Description, setDescription] = useState("");
-  const [video, setVideo] = useState(null);
+  const [Name, setName] = useState("");
+  const [Description, setDescription] = useState("from admin");
+  const [Attachment, setAttachment] = useState(null);
 
   const { loading } = useSelector((state) => state.course);
 
-  const handleAddCourse = () => {
+  const handleAddAttachment = () => {
     const formData = new FormData();
-    formData.append("VideoName", VideoName);
+    formData.append("Name", Name);
     formData.append("Description", Description);
-    formData.append("Video", video);
-    formData.append("CourseId", id);
+    formData.append("Attachment", Attachment);
+    formData.append("VideoId", id);
     // todo: send video
-    dispatch(addVideo(formData, id));
-    setVideoName("");
+    dispatch(addAttachment(formData, Name));
+    setName("");
     setDescription("");
-    setVideo(null);
+    setAttachment(null);
   };
 
   return (
     <div className="dash-users-layout video-layout">
-      <div className="check video-lay">
+      <div className="check attachment-lay">
         <div className="add-new">
-          <p>إضافة كورس جديد ؟</p>
+          <p>إضافة ملحق جديد ؟</p>
           <img
             src="/assests/deleteIcon.png"
             alt=""
@@ -41,24 +41,14 @@ const AddAttachmentLayout = ({ id }) => {
         </div>
         <img src="/assests/addCourseImg.png" />
         <form className="form form-dash">
-          <label>أدخل اسم الفيديو</label>
+          <label>أدخل اسم الملحق</label>
           <input
-            value={VideoName}
+            value={Name}
             onChange={(e) => {
-              setVideoName(e.target.value);
+              setName(e.target.value);
             }}
             type="text"
-            placeholder="الفيديو الأول"
-          />
-
-          <label>أدخل وصف الفيديو</label>
-          <input
-            value={Description}
-            onChange={(e) => {
-              setDescription(e.target.value);
-            }}
-            type="text"
-            placeholder="الفيديو الأول"
+            placeholder="اسم الملحق"
           />
 
           <div className="input-photo">
@@ -66,13 +56,13 @@ const AddAttachmentLayout = ({ id }) => {
               className="hide-input"
               type="file"
               onChange={(e) => {
-                setVideo(e.target.files[0]);
+                setAttachment(e.target.files[0]);
               }}
             />
-            <div className="div-helper">أضف فيديو</div>
+            <div className="div-helper">أضف ملحق</div>
           </div>
 
-          <div className="btn" onClick={handleAddCourse}>
+          <div className="btn" onClick={handleAddAttachment}>
             {loading ? (
               <RotatingLines
                 strokeColor="#fff"

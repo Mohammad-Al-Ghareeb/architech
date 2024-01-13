@@ -30,12 +30,12 @@ const AddVideoLayout = ({ id }) => {
     <div className="dash-users-layout video-layout">
       <div className="check video-lay">
         <div className="add-new">
-          <p>إضافة كورس جديد ؟</p>
+          <p>إضافة فيديو جديد ؟</p>
           <img
             src="/assests/deleteIcon.png"
             alt=""
             onClick={() => {
-              dispatch(coursesAction.setIsOpenedAttachment());
+              dispatch(coursesAction.setIsOpenedVideo());
             }}
           />
         </div>

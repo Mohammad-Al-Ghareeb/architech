@@ -18,8 +18,8 @@ const ChooseVideoSrc = ({ e, index }) => {
         <div className="video-src-data-text">
           <div className="number">{index}</div>
           <div className="video-title">
-            <p>مخصص لكتابة عنوان الفيديو</p>
-            <p>حذف الفيديو</p>
+            <p>{e.videoName}</p>
+            <p></p>
           </div>
         </div>
       </div>

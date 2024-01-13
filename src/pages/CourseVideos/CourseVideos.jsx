@@ -36,7 +36,7 @@ const CourseVideos = () => {
     <div className="course-videos">
       {isOpenedVideo && <AddVideoLayout id={id} />}
 
-      {isOpenedAttachment && <AddAttachmentLayout />}
+      {isOpenedAttachment && <AddAttachmentLayout id={videoData?.videoId} />}
       <Header
         src={"/assests/allCourses.png"}
         headerName={helperName}
@@ -50,9 +50,9 @@ const CourseVideos = () => {
           <video src="https://drive.google.com/uc?id=1FI9lkSkqnwyQmrXHfaIa61P7i56fRx_A&export=download"></video>
         </div> */}
         <div className="video-data">
-          {videoData?.fileId ? (
+          {videoData?.fileShowId ? (
             <>
-              <p>{videoData?.fileId}</p>
+              <p>{videoData?.fileShowId}</p>
               <img src="/assests/videoImg.png" alt="" />
             </>
           ) : (
