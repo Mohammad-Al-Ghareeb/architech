@@ -55,7 +55,7 @@ const AddUserToCourse = ({ currentPage, setCurrent }) => {
         <img src="/assests/codeImg.png" />
         <form className="form form-dash">
           <select
-            className="select"
+            className="select1"
             value={courseName}
             onChange={(e) => setCourseName(e.target.value)}
           >

@@ -1,0 +1,11 @@
+.notification-page {
+  padding: 10px;
+}
+
+.notification-page {
+  height: calc(100vh - 160px);
+}
+
+.notification-page .header {
+  margin-bottom: 30px;
+}

@@ -10,12 +10,12 @@ export function loginUser(user) {
 
       dispatch(authActions.login(data));
       localStorage.setItem("userInfo", JSON.stringify(data));
-      dispatch(authActions.loading());
       toast.success("Loged successfully");
     } catch (error) {
       toast.error(error.response.data);
-      dispatch(authActions.loading());
       console.log(error.response.data);
+    } finally {
+      dispatch(authActions.loading());
     }
   };
 }

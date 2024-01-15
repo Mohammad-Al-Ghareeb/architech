@@ -18,12 +18,10 @@ export function getSubscribers(currentPage, subscriberPerPage) {
 
 export function deleteSubscribers(userId, currentPage, setCurrentPage) {
   return async (dispatch) => {
-    const user = {
-      userName: userId.userName,
-      code: userId.code,
-    };
     try {
-      await request.delete(`/Subscriber/DeleteSubscriber`, user);
+      await request.delete(
+        `/Subscriber/DeleteSubscriber?UserName=${userId.userName}&Code=${userId.code}`
+      );
       //   dispatch(subscribersAction.removeSubscriber(userId));
       toast.success("تم حذف المشترك...");
     } catch (error) {

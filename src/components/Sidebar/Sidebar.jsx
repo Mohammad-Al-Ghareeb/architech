@@ -1,10 +1,11 @@
 import { NavLink } from "react-router-dom";
 import "./Sidebar.css";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { authActions } from "../../redux/slices/authSlice";
 import { coursesAction } from "../../redux/slices/coursesSlice";
 
 const Sidebar = () => {
+  const { user } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   return (
     <div className="sidebar">
@@ -44,7 +45,7 @@ const Sidebar = () => {
             />
           </svg>
         </div>
-        <p className="user-name">Mohammad Al Ghareeb</p>
+        <p className="user-name">{user.username}</p>
         <p className="role">Admin</p>
       </div>
       <div className="links">

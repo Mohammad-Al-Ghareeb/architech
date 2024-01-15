@@ -7,6 +7,7 @@ import { appUserReducer } from "./slices/appUsersSlice";
 import { centersReducer } from "./slices/centersSlice";
 import { coursesReducer } from "./slices/coursesSlice";
 import { subscribersReducer } from "./slices/subscribersSlice";
+import { notificationsReducer } from "./slices/notificationsSlice";
 
 const store = configureStore({
   reducer: {
@@ -18,6 +19,7 @@ const store = configureStore({
     center: centersReducer,
     course: coursesReducer,
     subscriber: subscribersReducer,
+    notification: notificationsReducer,
   },
 });
 

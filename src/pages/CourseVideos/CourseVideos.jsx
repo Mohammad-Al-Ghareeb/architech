@@ -17,7 +17,7 @@ import AddAttachmentLayout from "../../components/AddAttachmentLayout/AddAttachm
 
 const CourseVideos = () => {
   const dispatch = useDispatch();
-  const { isOpenedVideo } = useSelector((state) => state.course);
+  const { isOpenedVideo, attachmentId } = useSelector((state) => state.course);
   const { id } = useParams();
   useEffect(() => {
     dispatch(getCourseVideos(id));
@@ -77,8 +77,11 @@ const CourseVideos = () => {
                   <div
                     className="delete-btn"
                     onClick={() => {
-                      // console.log(videoData?.attachmentId[0]);
-                      dispatch(deleteAttachment(videoData?.attachmentId[0]));
+                      dispatch(
+                        deleteAttachment(
+                          videoData?.attachmentId[0] || attachmentId
+                        )
+                      );
                     }}
                   >
                     حذف هذا الملف
@@ -122,7 +125,9 @@ const CourseVideos = () => {
                 className="delete-btn"
                 disabled={!videoData}
                 onClick={() => {
-                  dispatch(deleteVideo(videoData.videoId, videoData.courseId));
+                  dispatch(
+                    deleteVideo(videoData?.videoId, videoData?.courseId)
+                  );
                 }}
               >
                 {videoData ? "حذف هذا الفيديو" : "لايوجد فيديو لعرضه"}

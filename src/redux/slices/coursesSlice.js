@@ -15,6 +15,7 @@ const coursesSlice = createSlice({
     videoSrc: null,
     videoData: null,
     videoAttachment: null,
+    attachmentId: null,
     helperName: null,
   },
   reducers: {
@@ -70,6 +71,9 @@ const coursesSlice = createSlice({
     },
     setIsOpenedAttachment(state) {
       state.isOpenedAttachment = !state.isOpenedAttachment;
+    },
+    setAttachmentId(state, action) {
+      state.attachmentId = action.payload;
     },
   },
 });

@@ -19,7 +19,9 @@ const LoginPage = () => {
     if (userName.trim() === "") return toast.error("email is required");
     if (password.trim() === "") return toast.error("password is required");
 
-    dispatch(loginUser({ userName, password, deviceId: "00F" }));
+    dispatch(
+      loginUser({ userName, password, deviceId: "00F", FcmToken: "812" })
+    );
   };
 
   return (

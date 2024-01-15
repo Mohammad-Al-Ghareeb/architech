@@ -123,13 +123,17 @@ export function addAttachment(attachmentData, Name) {
   return async (dispatch) => {
     try {
       dispatch(coursesAction.setLoading());
-      await request.post(`/Video/AddAttachmentToVideo`, attachmentData);
+      const { data } = await request.post(
+        `/Video/AddAttachmentToVideo`,
+        attachmentData
+      );
       toast.success("تم اضافة الملحق");
+      dispatch(coursesAction.setAttachmentId(data));
+      dispatch(coursesAction.setVideoAttachment(Name));
     } catch (error) {
       toast.error(error.response.data.errors);
       console.log(error);
     } finally {
-      dispatch(coursesAction.setVideoAttachment(Name));
       dispatch(coursesAction.setLoading());
     }
   };

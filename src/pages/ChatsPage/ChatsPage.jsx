@@ -14,7 +14,6 @@ const ChatsPage = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const pages = Math.ceil(numberOfChats / CHAT_PER_PAGE);
   useEffect(() => {
-    getChats();
     dispatch(getChats(currentPage, CHAT_PER_PAGE));
   }, [currentPage, dispatch]);
 
