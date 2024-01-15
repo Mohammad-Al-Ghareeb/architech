@@ -1,0 +1,11 @@
+.subscribers-page {
+  padding: 10px;
+}
+
+.subscribers-page .header {
+  margin-bottom: 30px;
+}
+
+.subscribers-page-containers {
+  height: calc(100vh - 160px);
+}

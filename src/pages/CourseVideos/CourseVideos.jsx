@@ -134,8 +134,19 @@ const CourseVideos = () => {
           <div className="video-list-helper">
             {courseVideos?.map((e, index) => {
               return <ChooseVideoSrc key={index} e={e} index={index + 1} />;
-              // return <p key={index}>{e.videoId}</p>;
             })}
+            {/* <div className="chooseVideoSrc">hi</div>
+            <div className="chooseVideoSrc">hi</div>
+            <div className="chooseVideoSrc">hi</div>
+            <div className="chooseVideoSrc">hi</div>
+            <div className="chooseVideoSrc">hi</div>
+            <div className="chooseVideoSrc">hi</div>
+            <div className="chooseVideoSrc">hi</div>
+            <div className="chooseVideoSrc">hi</div>
+            <div className="chooseVideoSrc">hi</div>
+            <div className="chooseVideoSrc">hi</div>
+            <div className="chooseVideoSrc">hi</div>
+            <div className="chooseVideoSrc">hi</div> */}
           </div>
         </div>
       </div>

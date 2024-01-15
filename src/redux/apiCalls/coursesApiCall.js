@@ -16,6 +16,17 @@ export function getCourses(currentPage, appUserPerPage) {
   };
 }
 
+export function getAllCourses() {
+  return async (dispatch) => {
+    try {
+      const { data } = await request.get(`/Course/GetAllCourses`);
+      dispatch(coursesAction.setAllCourse(data));
+    } catch (error) {
+      console.log(error);
+    }
+  };
+}
+
 export function getOneCourse(id) {
   return async (dispatch) => {
     try {

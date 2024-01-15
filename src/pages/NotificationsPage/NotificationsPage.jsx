@@ -1,4 +1,4 @@
-import React from "react";
+import "./NotificationsPage.css";
 
 const NotificationsPage = () => {
   return <div>NotificationsPage</div>;

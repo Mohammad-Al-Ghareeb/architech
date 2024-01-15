@@ -6,8 +6,11 @@ const Header = ({
   yes,
   nameNumber,
   number,
+  sui,
   buttonName,
   functionClick,
+  functionTwoClick,
+  buttonNameTwo,
 }) => {
   return (
     <div className="header">
@@ -24,7 +27,17 @@ const Header = ({
           </>
         )}
       </div>
-      <button onClick={() => functionClick()}>{buttonName}</button>
+      <div className="test-header">
+        <button onClick={() => functionClick()}>{buttonName}</button>
+        {sui && (
+          <button
+            style={{ marginRight: "10px" }}
+            onClick={() => functionTwoClick()}
+          >
+            {buttonNameTwo}
+          </button>
+        )}
+      </div>
     </div>
   );
 };

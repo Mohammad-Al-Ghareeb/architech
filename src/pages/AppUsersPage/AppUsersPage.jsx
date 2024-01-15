@@ -23,7 +23,12 @@ const AppUsersPage = () => {
 
   return (
     <div className="app-users-page">
-      {isOpenedApp && <AppUsersLayout />}
+      {isOpenedApp && (
+        <AppUsersLayout
+          currentPage={currentPage}
+          appUserPerPage={App_USER_PER_PAGE}
+        />
+      )}
       <Header
         src={"/assests/appUsersPhoto.png"}
         headerName={"مستخدمي التطبيق"}

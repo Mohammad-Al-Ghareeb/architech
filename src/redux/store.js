@@ -6,6 +6,7 @@ import { dashUserReducer } from "./slices/dashUserSlice";
 import { appUserReducer } from "./slices/appUsersSlice";
 import { centersReducer } from "./slices/centersSlice";
 import { coursesReducer } from "./slices/coursesSlice";
+import { subscribersReducer } from "./slices/subscribersSlice";
 
 const store = configureStore({
   reducer: {
@@ -16,6 +17,7 @@ const store = configureStore({
     appUser: appUserReducer,
     center: centersReducer,
     course: coursesReducer,
+    subscriber: subscribersReducer,
   },
 });
 

@@ -14,6 +14,8 @@ const CentersLayout = ({ currentPage, centerPerPage }) => {
   const { loading } = useSelector((state) => state.dashUser);
 
   const handleAddAdmin = () => {
+    phoneNumbers.push(oneNumber);
+    console.log(phoneNumbers);
     const center = {
       centerName,
       centerAddress,
@@ -69,15 +71,15 @@ const CentersLayout = ({ currentPage, centerPerPage }) => {
             type="text"
             placeholder="099999"
           />
-          <div
-            className="add-new-number"
-            onClick={() => {
-              phoneNumbers.push(oneNumber);
-              setOneNumber("");
-            }}
-          >
-            أضف رقم اخر؟
-          </div>
+          {/* <div
+              className="add-new-number"
+              onClick={() => {
+                phoneNumbers.push(oneNumber);
+                setOneNumber("");
+              }}
+            >
+              أضف رقم اخر؟
+            </div> */}
           <div className="btn" onClick={handleAddAdmin}>
             {loading ? (
               <RotatingLines

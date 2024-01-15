@@ -4,6 +4,7 @@ const coursesSlice = createSlice({
   name: "courses",
   initialState: {
     courses: [],
+    allCourse: [],
     courseVideos: [],
     numberOfCourses: 0,
     isOpenedCourse: false,
@@ -19,6 +20,9 @@ const coursesSlice = createSlice({
   reducers: {
     setCourses(state, action) {
       state.courses = action.payload;
+    },
+    setAllCourse(state, action) {
+      state.allCourse = action.payload;
     },
     setNumberOfCourses(state, action) {
       state.numberOfCourses = action.payload;
